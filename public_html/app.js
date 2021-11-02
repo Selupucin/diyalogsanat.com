@@ -34,8 +34,7 @@ const sizeOf = require('object-sizeof');
 
 const nodemailer = require('nodemailer');
 
-app.use("/urun/assets/", express.static(__dirname + '/assets/'))
-app.use("/kategori/assets/", express.static(__dirname + '/assets/'))
+app.use("/assets/", express.static(__dirname + '/assets/'))
 
 app.use(express.json()) // for parsing application/json
 
@@ -63,14 +62,10 @@ let transporter = nodemailer.createTransport({
     }
 });
 
-setTimeout(() => {
-    db.write({}, "main").than(q => {
-        if (q.insertedCount > 0) {
-            console.log("yes")
-        } else {
-            console.log("no")
-        }
+app.get("/", (req, res) => {
+    twing.render("index.html",{}).then(output => {
+        res.send(output)
     })
-}, 2000);
+})
 
 app.listen(port, () => console.log("Sistem Başlatıldı"))
