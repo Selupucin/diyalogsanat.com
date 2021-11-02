@@ -1,0 +1,158 @@
+{% extends "/layouts/layout_pages.html" %}
+{% block stylesheet %}
+    <!-- datatable css start-->
+    <link rel="stylesheet" type="text/css" href="../assets/css/datatables.css">
+    <!-- datatable css Ends-->
+{% endblock stylesheet %}
+{% block main %}
+<div class="page-body">
+  <div class="container-fluid">
+    <div class="page-header">
+      <div class="row">
+        <div class="col-lg-6">
+          <h3>Kategori</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Container-fluid starts-->
+  <div class="container-fluid">
+    <div class="row">
+        <div class="card shadow-0 border height-equal col-sm-12 col-xl-12">
+          <div class="card-header" style="border-bottom-width: 0;">
+            <h5>Kategori Ekle</h5>
+            <span>Lütfen benzer veya aynı isimde kategoriler oluşturmayınız!</span>
+            <div class="card-header-right">
+              <ul class="list-unstyled card-option">
+                <li><i class="icofont icofont-plus minimize-card"></i></li>
+                <li><i class="icofont icofont-error close-card"></i></li>
+              </ul>
+            </div>
+          </div>
+          <div class="card-body row" style="display: none;">
+            <div class="col-sm-12 col-md-8 col-xl-5">
+              <div class="form-group">
+                <label for="newCategoryName">Kategori İsmi</label>
+                <input class="form-control" id="newCategoryName" type="text" placeholder="Etek">
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-8 col-xl-5">
+              <div class="form-group">
+                <label for="newCategoryNumber">Kategori Sırası</label>
+                <input class="form-control" id="newCategoryNumber" type="number" placeholder="0" value="0">
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-4 col-xl-2">
+              <div class="media row">
+                <label for="subCategoryActive"
+                  class="col-sm-12 col-md-12 col-xl-12 col-form-label m-r-10 text-center">Alt Kategori</label>
+                <div class="media-body text-center icon-state">
+                  <label class="switch">
+                    <input onclick="showSubMenu()" id="subCategoryActive" type="checkbox">
+                    <span class="switch-state"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div id="openNewWorld" style="display: none;" class="col-sm-12 col-md-12 col-xl-10">
+              <div class="form-group">
+                <label for="selectMainCategory">Kategori Seçiniz</label>
+                <select onchange="listAgain()" class="form-control digits" id="selectMainCategory">
+                  <option value="empty">Bir kategori seçiniz</option>
+                  {% for category in categories %}
+                  {% if category.status =="main" %}
+                  <option value="{{category.id}}">{{category.name}}</option>
+                  {% endif %}
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+            <div id="helloNewWorldButton" style="display: none;" class="col-sm-12 col-md-4 col-xl-2">
+              <div class="media row">
+                <label for="lastCategoryActive"
+                  class="col-sm-12 col-md-12 col-xl-12 col-form-label m-r-10 text-center">Son Kategori</label>
+                <div class="media-body text-center icon-state">
+                  <label class="switch">
+                    <input onclick="openSecondSub()" id="lastCategoryActive" type="checkbox">
+                    <span class="switch-state"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div style="display: none;" id="helloNewWorld" class="col-sm-12 col-md-12 col-xl-12"></div>
+          </div>
+          <div class="card-footer" style="display: none;">
+            <div class="row">
+              <button onclick="saveCategory()" class="btn btn-primary col-sm-12 col-md-3 col-xl-3">Kategoriyi
+                Ekle</button>
+              <div class="col-sm-12 col-md-1 col-xl-1"></div>
+              <button onclick="clearForm()" class="btn btn-outline-secondary col-sm-12 col-md-3 col-xl-3">Formu
+                Temizle</button>
+            </div>
+          </div>
+        </div>
+
+      <div class="card shadow-0 border height-equal col-sm-6 col-md-12 col-xl-12">
+        <div class="card-header" style="border-bottom-width: 0;">
+          <h5>Kategoriler</h5>
+          <div class="card-header-right">
+            <ul class="list-unstyled card-option">
+              <li><i class="icofont icofont-minus minimize-card"></i></li>
+              <li><i class="icofont icofont-error close-card"></i></li>
+            </ul>
+          </div>
+        </div>
+        <div class="card-body row">
+          <div class="table-responsive" style="overflow: inherit;">
+            <table class="display" id="basic-1">
+              <thead>
+                <tr>
+                  <th>Kategori</th>
+                  <th>Sıra</th>
+                  <th>Id</th>
+                  <th>İşlem</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for category in categories %}
+                <tr>
+                  <td>{{category.name}}</td>
+                  <td>{{category.th}}</td>
+                  <td>{{category.id}}</td>
+                  <td>
+                    <button onclick="changeModal('{{category.id}}')" type="button" data-toggle="modal"
+                      data-target="#exampleModalCenter" class="btn btn-primary col-sm-7 col-md-7 col-xl-7" style="margin-right: 5px;">Düzenle</button>
+                    <button onclick="deleteCategory('{{category.id}}','{{category.status}}')" class="sweet-product-confirm btn btn-outline-secondary col-sm-4 col-md-4 col-xl-4" style="color: white;">Sil</button>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            <!--Modal Start-->
+            <div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog"
+              aria-labelledby="exampleModalCenter" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div id="modalBody" class="modal-content">
+
+                </div>
+              </div>
+            </div>
+            <!--Modal End-->
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- Container-fluid Ends-->
+</div>
+{% endblock main %}
+{% block javascript %}
+<!-- datatable JS start-->
+<script src="../assets/js/datatable/datatables/jquery.dataTables.min.js"></script>
+<script src="../assets/js/datatable/datatables/datatable.custom.js"></script>
+<!-- datatable JS end-->
+
+<script src="../assets/js/control/category.js"></script>
+{% endblock javascript %}

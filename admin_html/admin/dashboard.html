@@ -1,0 +1,269 @@
+{% extends "/layouts/layout_pages.html" %}
+{% block stylesheet %}
+
+{% endblock stylesheet %}
+{% block main %}
+<div class="page-body">
+  <div class="container-fluid">
+    <div class="page-header">
+      <div class="row">
+        <div class="col-lg-6">
+          <h3>Hoşgeldin, <span class="txt-secondary">{{user}}</span></h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="card shadow-0 border height-equal col-sm-6 col-md-12 col-xl-12">
+        <div class="card-header" style="border-bottom-width: 0;">
+          <h5>Site Bilgileri</h5>
+          <span>Lütfen bilgilerinizin doğru olduğundan emin olunuz.</span>
+          <div class="card-header-right">
+            <ul class="list-unstyled card-option">
+              <li><i class="icofont icofont-plus minimize-card"></i></li>
+              <li><i class="icofont icofont-error close-card"></i></li>
+            </ul>
+          </div>
+        </div>
+        <div class="card-body row" style="display: none;">
+          <div class="col-sm-12 col-md-6 col-xl-6">
+            <div class="form-group">
+              <label for="sitePhoneNumber">Telefon Numarası</label>
+              <input class="form-control" id="sitePhoneNumber" type="tel" placeholder="0500 000 00 00"
+                value="{{site.tel}}">
+            </div>
+          </div>
+
+          <div class="col-sm-12 col-md-6 col-xl-6">
+            <div class="form-group">
+              <label for="siteEmail">E-mail Adresi</label>
+              <input class="form-control" id="siteEmail" type="email" placeholder="info@volkanmarin.com"
+                value="{{site.mail}}">
+            </div>
+          </div>
+
+          <div class="col-sm-12 col-md-12 col-xl-12">
+            <div class="form-group">
+              <label for="siteAdress">Adres</label>
+              <textarea class="form-control" id="siteAdress" rows="3">{{site.adress}}</textarea>
+            </div>
+          </div>
+
+          <div class="col-sm-12 col-md-12 col-xl-12">
+            <div class="form-group">
+              <label for="promotionText">Tanıtım Yazısı</label>
+              <textarea class="form-control" id="promotionText" rows="2">{{site.promotionText}}</textarea>
+            </div>
+          </div>
+
+          <div class="col-sm-12 col-md-12 col-xl-12">
+            <div class="form-group">
+              <label for="mapURL">Harita URL</label>
+              <textarea class="form-control" id="mapURL" rows="2">{{site.mapURL}}</textarea>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer" style="display: none;">
+          <div class="row">
+            <button onclick="saveSiteInfo('{{site._id}}')"
+              class="btn btn-primary col-sm-12 col-md-3 col-xl-3">Kaydet</button>
+            <div class="col-sm-12 col-md-1 col-xl-1"></div>
+            <button onclick="clearSiteInfo()" class="btn btn-outline-secondary col-sm-12 col-md-3 col-xl-3">Formu
+              Temizle</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card shadow-0 border height-equal col-sm-6 col-md-12 col-xl-12">
+        <div class="card-header" style="border-bottom-width: 0;">
+          <h5>Slider</h5>
+          <div class="card-header-right">
+            <ul class="list-unstyled card-option">
+              <li><i class="icofont icofont-plus minimize-card"></i></li>
+              <li><i class="icofont icofont-error close-card"></i></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card-body row" style="display: none;">
+          <form class="row col-12" action="/saveslider" method="post" id="sliderForm" name="sliderForm"
+            enctype="multipart/form-data">
+
+            <div class="col-sm-12 col-md-3 col-lg-3" id="previewImage">
+              {% for slide in slider %}
+              {% if slide.position == "leftTop" %}
+              <img style="max-width: 100%;" id="sliderImage" src="https://volkanmarin.com/sliderimages/{{slide.img}}"
+                alt="">
+              {% endif %}
+              {% endfor %}
+            </div>
+            <div class="col-sm-12 col-md-9 col-xl-9">
+              <div class="form-group">
+                <label for="selectSliderType">Slider Tipini Seçiniz</label>
+                <select onchange="horseWashing(this.value)" class="form-control digits" id="selectSliderType"
+                  name="selectSliderType">
+                  <option value="leftTop">Sol Üst Alan</option>
+                  <option value="leftBottom">Sol Alt Alan</option>
+                  <option value="right">Sağ Alan</option>
+                </select>
+              </div>
+              <div class="form-group" style="display: none;" id="selectSlideArea">
+                <label for="selectSlider">Slider Seçiniz</label>
+                <select onchange="inAndOut()" class="form-control digits" id="selectSlider" name="selectSlider">
+                  <option value="firstSlider">1. Slider</option>
+                  <option value="secondSlider">2. Slider</option>
+                  <option value="thirdSlider">3. Slider</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="images">Slider Resmi</label>
+                <input class="form-control" type="file" name="sliderImage" id="images"
+                  accept="image/png, image/jpg, image/jpeg">
+              </div>
+              <div class="form-group">
+                <label for="sliderLink">Link</label>
+                {% for slide in slider %}
+                {% if slide.position == "leftTop" %}
+                <input class="form-control" id="sliderLink" name="sliderLink" type="text" value="{{slide.link}}">
+                {% endif %}
+                {% endfor %}
+              </div>
+              <div class="form-group">
+                {% for slide in slider %}
+                {% if slide.position == "leftTop" %}
+                <label for="sliderText">Slider Yazısı</label>
+                <textarea class="form-control" id="sliderText" name="sliderText" rows="3">{{slide.text}}</textarea>
+                {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+        </div>
+
+        <div class="card-footer" style="display: none;">
+          <div class="row">
+            <div id="saveSlider" class="btn btn-primary col-sm-12 col-md-3 col-xl-3">Kaydet</div>
+          </div>
+        </div>
+        </form>
+      </div>
+
+      <div class="card shadow-0 border height-equal col-sm-6 col-md-12 col-xl-12">
+        <div class="card-header" style="border-bottom-width: 0;">
+          <h5>Partner Firmalar</h5>
+          <div class="card-header-right">
+            <ul class="list-unstyled card-option">
+              <li><i class="icofont icofont-plus minimize-card"></i></li>
+              <li><i class="icofont icofont-error close-card"></i></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card-body row" style="display: none;">
+          <form class="row col-12" action="/partnerCompany" method="post" id="partnerCompany" name="partnerCompany"
+            enctype="multipart/form-data">
+
+            <div class="col-sm-12 col-md-12 col-xl-12 mb-2">
+              
+              <div class="form-group">
+                <label for="imagesPartnerCompany">Firma Resmi</label>
+                <input class="form-control" type="file" name="imagesPartnerCompany" id="imagesPartnerCompany"
+                  accept="image/png, image/jpg, image/jpeg">
+              </div>
+              
+            </div>
+
+            {% for partnerCompany in partnerCompanies %}
+            <div class="col-2"> 
+              <img style="max-width: 100%;" src="https://volkanmarin.com/partnercompany/{{partnerCompany.img}}" alt="">
+              <div onclick="removePartner('{{partnerCompany._id}}')" class="btn btn-primary col-sm-12 col-md-12 col-xl-12">Sil</div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="card-footer" style="display: none;">
+          <div class="row">
+            <div id="savePartnerCompany" class="btn btn-primary col-sm-12 col-md-3 col-xl-3">Kaydet</div>
+          </div>
+        </div>
+        </form>
+      </div>
+
+      <div class="card shadow-0 border height-equal col-sm-6 col-md-12 col-xl-12">
+        <div class="card-header" style="border-bottom-width: 0;">
+          <h5>Hakkımızda Sayfası</h5>
+          <div class="card-header-right">
+            <ul class="list-unstyled card-option">
+              <li><i class="icofont icofont-plus minimize-card"></i></li>
+              <li><i class="icofont icofont-error close-card"></i></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card-body row" style="display: none;">
+          <div class="col-sm-12 col-md-12 col-xl-12 mb-4">
+            <label for="aboutTextCkeditor">Firma Tanımı</label>
+            <textarea id="aboutTextCkeditor" name="aboutTextCkeditor" cols="30" rows="3">{{about.aboutText}}</textarea>
+          </div>
+
+          <div class="col-sm-12 col-md-4 col-xl-4">
+            <div class="form-group">
+              <label for="firstHeader">Başlık</label>
+              <input class="form-control" id="firstHeader" type="text" placeholder="Bir başlık giriniz"
+                value="{{about.sectionOne.firstBlock.title}}">
+            </div>
+            <div class="form-group">
+              <label for="firstText">Yazı</label>
+              <textarea class="form-control" id="firstText" rows="5">{{about.sectionOne.firstBlock.text}}</textarea>
+            </div>
+          </div>
+
+          <div class="col-sm-12 col-md-4 col-xl-4">
+            <div class="form-group">
+              <label for="secondHeader">Başlık</label>
+              <input class="form-control" id="secondHeader" type="text" placeholder="Bir başlık giriniz"
+                value="{{about.sectionOne.secondBlock.title}}">
+            </div>
+            <div class="form-group">
+              <label for="secondText">Yazı</label>
+              <textarea class="form-control" id="secondText" rows="5">{{about.sectionOne.secondBlock.text}}</textarea>
+            </div>
+          </div>
+
+          <div class="col-sm-12 col-md-4 col-xl-4">
+            <div class="form-group">
+              <label for="thirdHeader">Başlık</label>
+              <input class="form-control" id="thirdHeader" type="text" placeholder="Bir başlık giriniz"
+                value="{{about.sectionOne.thirdBlock.title}}">
+            </div>
+            <div class="form-group">
+              <label for="thirdText">Yazı</label>
+              <textarea class="form-control" id="thirdText" rows="5">{{about.sectionOne.thirdBlock.text}}</textarea>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer" style="display: none;">
+          <div class="row">
+            <button onclick="saveAbout('{{about._id}}')"
+              class="btn btn-primary col-sm-12 col-md-3 col-xl-3">Kaydet</button>
+            <div class="col-sm-12 col-md-1 col-xl-1"></div>
+            <button onclick="clearFormAbout()" class="btn btn-outline-secondary col-sm-12 col-md-3 col-xl-3">Formu
+              Temizle</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock main %}
+{% block javascript %}
+<!-- ckeditor JS start-->
+<script src="../assets/js/editor/ckeditor/ckeditor.js"></script>
+<script src="../assets/js/editor/ckeditor/adapters/jquery.js"></script>
+<script src="../assets/js/editor/ckeditor/styles.js"></script>
+<!-- ckeditor JS end-->
+
+<script src="../assets/js/editor/ckeditor/dashboardckeditor.js"></script>
+<script src="../assets/js/control/dashboard.js"></script>
+{% endblock javascript %}

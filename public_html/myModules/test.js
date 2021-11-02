@@ -1,0 +1,3 @@
+exports.ver = ()=>{
+    return "Deneme"
+}

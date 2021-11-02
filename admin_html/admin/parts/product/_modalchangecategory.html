@@ -1,0 +1,19 @@
+<div class="col-sm-12 col-md-12 col-xl-12">
+    <div class="form-group">
+        <label for="selectMainCategoryModal">Ana Kategori Seçiniz</label>
+        <select onchange="listSubModal()" class="form-control digits" id="selectMainCategoryModal">
+            <option value="empty">Bir kategori seçiniz</option>
+            {% for category in categories %}
+            <option value="{{category.id}}" data-name="{{category.name}}">{{category.name}}</option>
+            {% endfor %}
+        </select>
+    </div>
+</div>
+
+<div id="productSubCategoryModal" class="col-sm-12 col-md-12 col-xl-12">
+
+</div>
+
+<div id="productLastCategoryModal" class="col-sm-12 col-md-12 col-xl-12">
+
+</div>

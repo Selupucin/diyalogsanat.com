@@ -1,0 +1,186 @@
+{% extends "/layouts/layout_pages.html" %}
+{% block stylesheet %}
+<!-- datatable css start-->
+<link rel="stylesheet" type="text/css" href="../assets/css/datatables.css">
+<!-- datatable css Ends-->
+{% endblock stylesheet %}
+{% block main %}
+<div class="page-body">
+  <div class="container-fluid">
+    <div class="page-header">
+      <div class="row">
+        <div class="col-lg-6">
+          <h3>Ürünler</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Container-fluid starts-->
+  <div class="container-fluid">
+    <div class="row">
+      <div class="card shadow-0 border height-equal col-sm-6 col-md-12 col-xl-12">
+        <div class="card-header" style="border-bottom-width: 0;">
+          <h5>Ürün Ekle</h5>
+          <span>Lütfen benzer veya aynı isimde ürünler oluşturmayınız!</span>
+          <div class="card-header-right">
+            <ul class="list-unstyled card-option">
+              <li><i class="icofont icofont-plus minimize-card"></i></li>
+              <li><i class="icofont icofont-error close-card"></i></li>
+            </ul>
+          </div>
+        </div>
+        <div class="card-body row" style="display: none;">
+          <form class="row" action="/saveproduct" method="post" id="form1" name="form1" enctype="multipart/form-data">
+
+
+            <div class="col-sm-12 col-md-12 col-xl-12">
+              <div class="form-group">
+                <label for="">Ürün Resmi</label>
+                <input class="form-control" type="file" name="productImages" id="images"
+                  accept="image/png, image/jpg, image/jpeg" multiple>
+              </div>
+            </div>
+
+            <div class="col-sm-12 col-md-6 col-xl-6">
+              <div class="form-group">
+                <label for="newProductName">Ürün İsmi</label>
+                <input class="form-control" id="newProductName" name="newProductName" type="text" placeholder="Pense">
+              </div>
+            </div>
+
+            <div class="col-sm-12 col-md-6 col-xl-6">
+              <div class="form-group">
+                <label for="newProductNumber">Ürün Sırası</label>
+                <input class="form-control" id="newProductNumber" name="newProductNumber" type="number" placeholder="0" value="0">
+              </div>
+            </div>
+
+            <div class="col-sm-12 col-md-4 col-xl-4">
+              <div class="form-group">
+                <label for="selectMainCategory">Ana Kategori Seçiniz</label>
+                <select onchange="listSub()" class="form-control digits" id="selectMainCategory" name="selectMainCategory">
+                  <option value="empty" data-name="empty">Bir kategori seçiniz</option>
+                  {% for category in categories %}
+                  <option value="{{category.id}}" data-name="{{category.name}}">{{category.name}}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+
+            <div id="productSubCategory" class="col-sm-12 col-md-4 col-xl-4">
+
+            </div>
+
+            <div id="productLastCategory" class="col-sm-12 col-md-4 col-xl-4">
+
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-xl-12">
+              <div class="form-group mb-0">
+                <label for="newProductComment">Ürün Açıklaması</label>
+                <textarea class="form-control" id="newProductComment" name="newProductComment" rows="3"></textarea>
+              </div>
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-xl-12 mt-4">
+              <label for="newProductCkeditor">Ürün Alt Bilgi</label>
+              <textarea id="newProductCkeditor" name="newProductCkeditor" cols="30" rows="10"></textarea>
+            </div>
+
+        </div>
+        <div class="card-footer" style="display: none;">
+          <div class="row">
+            <div id="saveProduct" class="btn btn-primary col-sm-12 col-md-3 col-xl-3">Ürünü Ekle</div>
+            <div class="col-sm-12 col-md-1 col-xl-1"></div>
+            <div onclick="clearForm()" class="btn btn-outline-secondary col-sm-12 col-md-3 col-xl-3">Formu Temizle</div>
+          </div>
+        </div>
+        </form>
+      </div>
+
+
+
+      <div class="card shadow-0 border height-equal col-sm-6 col-md-12 col-xl-12">
+        <div class="card-header" style="border-bottom-width: 0;">
+          <h5>Ürünler</h5>
+          <div class="card-header-right">
+            <ul class="list-unstyled card-option">
+              <li><i class="icofont icofont-minus minimize-card"></i></li>
+              <li><i class="icofont icofont-error close-card"></i></li>
+            </ul>
+          </div>
+        </div>
+        <div class="card-body row">
+          <div class="table-responsive" style="overflow: inherit;">
+            <table class="display" id="basic-1">
+              <thead>
+                <tr>
+                  <th>Resim</th>
+                  <th>Ürün</th>
+                  <th>Sıra</th>
+                  <th>id</th>
+                  <th>Kategori</th>
+                  <th>İşlem</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for product in products %}
+                <tr>
+                  <td><img width="70px" src="https://volkanmarin.com/productimages/{{product.lowerNameImage}}/{{product.images[0].name}}" alt=""></td>
+                  <td>{{product.name}}</td>
+                  <td>{{product.th}}</td>
+                  <td>{{product.id}}</td>
+                  <td>{{product.category.categoryName}}</td>
+                  <td class="row">
+                    <button onclick="changeModal('{{product.id}}')" type="button" data-toggle="modal"
+                      data-target="#exampleModalCenter" class="btn btn-primary col-sm-7 col-md-7 col-xl-7"
+                      style="margin-right: 5px;">Düzenle</button>
+                    <button
+                      onclick="deleteProduct('{{product.id}}'); gaq.push(['_trackEvent', 'example', 'try', 'sweet-5']);"
+                      class="sweet-product-confirm btn btn-outline-secondary col-sm-4 col-md-4 col-xl-4"
+                      style="color: white;">Sil</button>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            <!--Modal Start-->
+            <div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog"
+              aria-labelledby="exampleModalCenter" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div id="modalBody" class="modal-content">
+
+                </div>
+              </div>
+            </div>
+            <!--Modal End-->
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!-- Container-fluid Ends-->
+</div>
+{% endblock main %}
+{% block javascript %}
+<!-- sweetalert JS start-->
+<script src="../assets/js/sweet-alert/sweetalert.min.js"></script>
+<script src="../assets/js/sweet-alert/product.js"></script>
+<!-- sweetalert JS end-->
+
+<!-- ckeditor JS start-->
+<script src="../assets/js/editor/ckeditor/ckeditor.js"></script>
+<script src="../assets/js/editor/ckeditor/adapters/jquery.js"></script>
+<script src="../assets/js/editor/ckeditor/styles.js"></script>
+<!-- ckeditor JS end-->
+
+<!-- datatable JS start-->
+<script src="../assets/js/datatable/datatables/jquery.dataTables.min.js"></script>
+<script src="../assets/js/datatable/datatables/datatable.custom.js"></script>
+<!-- datatable JS end-->
+
+<script src="../assets/js/editor/ckeditor/productckeditor.js"></script>
+<script src="../assets/js/control/product.js"></script>
+
+{% endblock javascript %}

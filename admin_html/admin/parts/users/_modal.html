@@ -1,0 +1,47 @@
+<div class="modal fade" id="_{{user._id}}" tabindex="-1" role="dialog" aria-labelledby="_{{user._id}}"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Kullanıcı Düzenle</h5>
+                <button id="closeModal" class="close" type="button" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="form theme-form">
+                    <div class="row m-b-30">
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label for="userName{{user._id}}">Kullanıcı Adı</label>
+                          <input id="userName{{user._id}}" class="form-control" type="text" placeholder="Adı Soyadı" value="{{user.userName}}">
+                        </div>
+                        <div class="form-group">
+                          <label for="userPassword{{user._id}}">Kullanıcı Şifre</label>
+                          <div class="input-group">
+                            <div class="input-group-prepend"><span class="input-group-text" id="inputGroupPrepend"><i
+                                  style="cursor: pointer;" id="passwordIcon" class="fa fa-eye"></i></span></div>
+                            <input class="form-control" id="userPassword{{user._id}}" type="password" placeholder="Şifre"
+                              aria-describedby="inputGroupPrepend">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                          <label for="userMail{{user._id}}">Kullanıcı Email</label>
+                          <input id="userMail{{user._id}}" class="form-control" type="email" placeholder="info@gosamplewebsite.com" value="{{user.userMail}}">
+                        </div>
+                        <div class="form-group">
+                          <label for="userPhone{{user._id}}">Kullanıcı Telefon</label>
+                          <input id="userPhone{{user._id}}" class="form-control" type="text" placeholder="0 500 000 00" value="{{user.userPhone}}">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="updateUser('{{user._id}}')" data-dismiss="modal"
+                    type="button">Kaydet</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+<div class="form-group">
+    <label for="selectLastCategory">Son Kategori Seçiniz</label>
+    <select class="form-control digits" id="selectLastCategory" name="selectLastCategory">
+      <option value="empty">Bir kategori seçiniz</option>
+      {% for category in categories %}
+      <option value="{{category.id}}" data-name="{{category.name}}">{{category.name}}</option>
+      {% endfor %}
+    </select>
+  </div>

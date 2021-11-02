@@ -1,0 +1,110 @@
+{% extends "/layouts/layout_pages.html" %}
+{% block stylesheet %}
+
+{% endblock stylesheet %}
+{% block main %}
+<div class="page-body">
+  <div class="container-fluid">
+    <div class="page-header">
+      <div class="row">
+        <div class="col-lg-6">
+          <h3>Kullanıcı Ayaları</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Container-fluid starts-->
+  <div class="container-fluid">
+    <div class="row starter-main">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <div class="header-top">
+              <h5>Kullanıcı Ekle</h5>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="form theme-form">
+              <div class="row m-b-30">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="userName">Kullanıcı Adı</label>
+                    <input id="userName" class="form-control" type="text" placeholder="Adı Soyadı">
+                  </div>
+                  <div class="form-group">
+                    <label for="userPassword">Kullanıcı Şifre</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend"><span class="input-group-text" id="inputGroupPrepend"><i
+                            style="cursor: pointer;" id="passwordIcon" class="fa fa-eye"></i></span></div>
+                      <input class="form-control" id="userPassword" type="password" placeholder="Şifre"
+                        aria-describedby="inputGroupPrepend">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="userMail">Kullanıcı Email</label>
+                    <input id="userMail" class="form-control" type="email" placeholder="info@gosamplewebsite.com">
+                  </div>
+                </div>
+              </div>
+              <a onclick="addUser()" id="addUser" class="btn btn-outline-primary mr-3 col-3" href="#">Ekle</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header">
+            <h5>Kullanıcılar</h5>
+          </div>
+          <div class="card-body">
+            <div class="tab-content" id="top-tabContent">
+              <div class="tab-pane fade show active" id="top-home" role="tabpanel" aria-labelledby="top-home-tab">
+                <div class="row">
+                  {% for user in users %}
+                  <div class="col-xl-4 col-lg-6">
+                    <div class="project-box"><span class="badge badge-primary">Aktif</span>
+                      <h6>{{user.userName}}</h6>
+                      <div class="media">
+                        <div class="media-body">
+                          <p>volkanmarin.com</p>
+                        </div>
+                      </div>
+                      <div class="row details">
+                        <div class="col-6"><span>Email</span></div>
+                        <div class="col-6 text-primary">{{user.userMail}}</div>
+                      </div>
+                      <div class="row details">
+                        <!-- <div class="col-6"><span>Tamamlanan İş </span></div>
+                                      <div class="col-6 text-primary">0</div>
+                                      <div class="col-6"> <span>Devam Eden İş</span></div>
+                                      <div class="col-6 text-primary">0</div>
+                                      <div class="col-6"> <span>Başlanacak İş</span></div>
+                                      <div class="col-6 text-primary">0</div> -->
+                      </div>
+                      <div class="project-status mt-4">
+                        <button class="btn btn-outline-secondary" onclick="userRemove('{{user._id}}')"
+                        type="button">Sil</button>
+                        <button class="btn btn-outline-primary" data-toggle="modal" data-target="#_{{user._id}}"
+                          type="button">Düzenle</button>
+                        {% include "/parts/users/_modal.html" %}
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Container-fluid Ends-->
+</div>
+{% endblock main %}
+{% block javascript %}
+<script src="../assets/js/control/user.js"></script>
+{% endblock javascript %}

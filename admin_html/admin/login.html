@@ -1,0 +1,45 @@
+{% extends "/layouts/layout_login.html" %}
+{% block main %}
+
+<!-- login page with video background start-->
+<div class="auth-bg-video">
+  <video id="bgvid" poster="../assets/images/other-images/coming-soon-bg.jpg" playsinline="" autoplay="" muted="" loop="">
+    <source src="../assets/video/auth-bg.mp4" type="video/mp4">
+  </video>
+  <div class="authentication-box">
+    <div class="mt-4">
+      <div class="card-body" style="box-shadow: 0 0 10px rgba(0, 0, 0, 0.329);">
+        <div class="cont text-center">
+          <div> 
+            <div class="theme-form">
+              <h4>Giriş</h4>
+              <h6>Lütfen Mail ve Şifrenizi giriniz</h6>
+              <div class="form-group">
+                <label for="userMail" class="col-form-label pt-0">E-Mail</label>
+                <input onkeyup="enter31(event)" id="userMail" class="form-control" type="text" required="">
+              </div>
+              <div class="form-group">
+                <label for="userPassword" class="col-form-label">Şifre</label>
+                <input onkeyup="enter31(event)" id="userPassword" class="form-control" type="password" required="">
+              </div>
+              <div class="checkbox p-0">
+                <input id="saveMe" type="checkbox">
+                <label for="saveMe">Beni Hatırla</label>
+              </div>
+              <div class="form-group row mt-3 mb-0">
+                <button onkeyup="enter31(event)" class="btn btn-primary btn-block" onclick="login()">Giriş</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- login page with video background end-->
+
+{% endblock main %}
+
+{% block javascripts %}
+<script src="../assets/js/control/login.js"></script>
+{% endblock javascripts %}

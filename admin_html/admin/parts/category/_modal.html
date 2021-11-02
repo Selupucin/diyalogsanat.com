@@ -1,0 +1,40 @@
+{% if system == true %}
+<div class="modal-header">
+    <h5 class="modal-title">Düzenlenen ürün: </h5>
+    <h5 class="modal-title txt-primary"> {{product.name}}</h5>
+    <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">×</span></button>
+</div>
+<div class="modal-body row">
+    <div class="col-sm-12 col-md-6 col-xl-6">
+        <div class="form-group">
+            <label for="changeProductName">Kategori Adı</label>
+            <input class="form-control" id="changeProductName" type="text" placeholder="Etek"
+                value="{{category.name}}">
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-xl-6">
+        <div class="form-group">
+            <label for="changeProductNumber">Kategori Sırası</label>
+            <input class="form-control" id="changeProductNumber" type="number" placeholder="0" value="{{category.th}}">
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button onclick="changeCategory('{{category.id}}','{{category.status}}')" class="btn btn-primary" type="button">Değişiklikleri
+        Kaydet</button>
+    <button class="btn btn-outline-secondary" type="button" data-dismiss="modal">İptal</button>
+</div>
+{% else %}
+<div class="modal-header">
+    <h5 class="modal-title">Hata!</h5>
+</div>
+<div class="modal-body row">
+    <div class="col-sm-12 col-md-6 col-xl-8">
+        <p>
+            Aradığınız kategori kayıt sırasında işlemlerinde hata olabilir veya kategori silinmiş olabilir. Kategori bilgileri
+            alınırken bir hata oluştu. Lütfen sistem sağlayıcınızla iletişime geçiniz.
+        </p>
+    </div>
+</div>
+{% endif %}

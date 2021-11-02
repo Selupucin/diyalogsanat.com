@@ -1,0 +1,78 @@
+{% if system == true %}
+<div class="modal-header">
+    <h5 class="modal-title">Düzenlenen ürün: </h5>
+    <h5 class="modal-title txt-primary"> {{product.name}}</h5>
+    <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true">×</span></button>
+</div>
+<div class="modal-body row">
+    <div class="col-sm-12 col-md-6 col-xl-8">
+        <div class="form-group">
+            <label for="changeProductName">Ürün İsmi</label>
+            <input class="form-control" id="changeProductName" type="text" placeholder="Pense" value="{{product.name}}">
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-md-6 col-xl-4">
+        <div class="form-group">
+            <label for="changeProductNumber">Ürün Sırası</label>
+            <input class="form-control" id="changeProductNumber" type="number" placeholder="0" value="{{product.th}}">
+        </div>
+    </div>
+
+    <div id="showCategoryArea" class="col-sm-12 col-md-8 col-xl-8">
+        <div class="form-group">
+            <label for="categoryLocked">Kategori</label>
+            <input class="form-control" id="categoryLocked" type="text" placeholder="Pense"
+                value="{{product.category.categoryNameHierarchy.main}} / {{product.category.categoryNameHierarchy.sub}} / {{product.category.categoryNameHierarchy.last}}"
+                disabled>
+        </div>
+    </div>
+
+    <div id="selectCategoryArea" class="col-sm-12 col-md-8 col-xl-8 row" style="display: none; margin: 0;">
+
+    </div>
+
+    <div class="media col-sm-12 col-md-4 col-xl-4">
+        <label for="changeCategoryActive">Kategoriyi Düzenle <br>
+            <p class="txt-secondary">(Önerilmez!)</p>
+        </label>
+        <div class="media-body text-center icon-state">
+            <label class="switch">
+                <input onclick="changeCategory('{{product.id}}')" id="changeCategoryActive" type="checkbox">
+                <span class="switch-state"></span>
+            </label>
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-md-12 col-xl-12">
+        <div class="form-group mb-0">
+            <label for="changeProductComment">Ürün Açıklaması</label>
+            <textarea class="form-control" id="changeProductComment" rows="3">{{ product.comment }}</textarea>
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-md-12 col-xl-12 mt-4">
+        <label for="changeProductCkeditor">Ürün Alt Bilgi</label>
+        <textarea id="changeProductCkeditor" name="changeProductCkeditor" cols="30"
+            rows="10"> {{ product.description|raw }}</textarea>
+    </div>
+</div>
+<div class="modal-footer">
+    <button onclick="changeProduct('{{product.id}}')" class="btn btn-primary" type="button">Değişiklikleri
+        Kaydet</button>
+    <button class="btn btn-outline-secondary" type="button" data-dismiss="modal">İptal</button>
+</div>
+{% else %}
+<div class="modal-header">
+    <h5 class="modal-title">Hata!</h5>
+</div>
+<div class="modal-body row">
+    <div class="col-sm-12 col-md-6 col-xl-8">
+        <p>
+            Aradığınız ürünün kayıt sırasında işlemlerinde hata olabilir veya ürün silinmiş olabilir. Ürün bilgileri
+            alınırken bir hata oluştu. Lütfen sistem sağlayıcınızla iletişime geçiniz.
+        </p>
+    </div>
+</div>
+{% endif %}
