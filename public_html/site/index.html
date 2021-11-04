@@ -1,12 +1,8 @@
-{% extends "/parts/layout.html" %}
-{% block title %}
+{% extends "/parts/layout.html" %} {% block title %}
 <title>Diyalog Sanat</title>
 {% endblock title %}
-{% block stylesheets %}
-{% endblock stylesheets %}
-{% block metatags %}
-
-{% endblock metatags %}
+{% block stylesheets %} {% endblock stylesheets %}
+{% block metatags %} {% endblock metatags %}
 {% block main %}
 {% include "/parts/hero.html" %}
 <!-- New Theater Plays Start -->
@@ -15,42 +11,435 @@
         New Theater Plays
     </h2>
     <div class="billboard-area">
-        <div class="billboard">
-            <div class="billboard-box">
-
+        <div class="billboard col-md-4 p-1">
+            <div class="billboard-box theater-unknow">
+                <div class="row">
+                    <div class="col-md-12 billboard-info">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h3>
+                                    Title
+                                </h3>
+                            </div>
+                            <div class="col-md-4">
+                                <p>
+                                    Next Play
+                                </p>
+                                <span>
+                                    01.08.2022
+                                </span>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="billboard-info-button" href=""><i class="fa fa-info-circle"
+                                        aria-hidden="true"></i></a>
+                            </div>
+                            <div class="col-md-3">
+                                <a type="button" class="billboard-buy-button">Buy Ticket</a>
+                            </div>
+                            <div class="col-md-12 topic">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus est officia quae
+                                    iusto, expedita vitae quas aliquid ipsum, deleniti quo id sed esse officiis, fugit
+                                    rerum rem sapiente aperiam porro.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="billboard">
-            <div class="billboard-box">
-
+        <div class="billboard col-md-4 p-1">
+            <div class="billboard-box theater-unknow1">
+                <div class="row">
+                    <div class="col-md-12 billboard-info">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h3>
+                                    Title
+                                </h3>
+                            </div>
+                            <div class="col-md-4">
+                                <p>
+                                    Next Play
+                                </p>
+                                <span>
+                                    01.08.2022
+                                </span>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="billboard-info-button" href=""><i class="fa fa-info-circle"
+                                        aria-hidden="true"></i></a>
+                            </div>
+                            <div class="col-md-3">
+                                <a type="button" class="billboard-buy-button">Buy Ticket</a>
+                            </div>
+                            <div class="col-md-12 topic">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus est officia quae
+                                    iusto, expedita vitae quas aliquid ipsum, deleniti quo id sed esse officiis, fugit
+                                    rerum rem sapiente aperiam porro.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="billboard">
-            <div class="billboard-box">
-
+        <div class="billboard col-md-4 p-1">
+            <div class="billboard-box theater-unknow2">
+                <div class="row">
+                    <div class="col-md-12 billboard-info">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h3>
+                                    Title
+                                </h3>
+                            </div>
+                            <div class="col-md-4">
+                                <p>
+                                    Next Play
+                                </p>
+                                <span>
+                                    01.08.2022
+                                </span>
+                            </div>
+                            <div class="col-md-2">
+                                <a class="billboard-info-button" href=""><i class="fa fa-info-circle"
+                                        aria-hidden="true"></i></a>
+                            </div>
+                            <div class="col-md-3">
+                                <a type="button" class="billboard-buy-button">Buy Ticket</a>
+                            </div>
+                            <div class="col-md-12 topic">
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus est officia quae
+                                    iusto, expedita vitae quas aliquid ipsum, deleniti quo id sed esse officiis, fugit
+                                    rerum rem sapiente aperiam porro.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 <!-- New Theater Plays End -->
-<!-- About Start -->
 <div class="container">
-    <div class="row about-area">
-        <div class="col-md-6">
-            <img class="about-image" src="https://www.egitimpedia.com/uploads/2020/04/20071120__cirque204.jpg"
-                alt="about-img">
+    <!-- About Start -->
+    <div class="about-area">
+        <div class="row">
+            <div class="col-md-6 col-lg-6 col-sm-6">
+                <img class="about-image" src="https://www.egitimpedia.com/uploads/2020/04/20071120__cirque204.jpg"
+                    alt="about-img">
+            </div>
+            <div class="col-md-6 col-lg-6 col-sm-6 about-texts">
+                <h1>WHO ARE WE</h1>
+                <span>Brand</span>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo velit quas eaque. Dolorum ab totam quo
+                    corrupti deserunt commodi ipsa, nihil omnis ut libero, quas doloremque, corporis molestiae beatae.
+                    Iure...
+                </p>
+                <a class="about-button" href="/hakkimizda">Read More...</a>
+            </div>
         </div>
-        <div class="col-md-6 about-texts">
-            <h1>WHO ARE WE</h1>
+        <!-- About End -->
+        <!-- Count Start -->
+        <div class="count-area">
+            <h1>OUR SKILLS</h1>
             <span>Brand</span>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo velit quas eaque. Dolorum ab totam quo
-                corrupti deserunt commodi ipsa, nihil omnis ut libero, quas doloremque, corporis molestiae beatae. Iure...
-            </p>
-            <a class="about-button" href="/hakkimizda">Devamını oku...</a>
+            <div class="row">
+                <div class="col-md-6 col-lg-6 col-sm-6">
+                    <div class="first-count count-bar">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h4>
+                                    Art
+                                </h4>
+                            </div>
+                            <div class="col-md-4">
+                                <span>
+                                    90%
+                                </span>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="colored-stroke"></div>
+                                <div class="white-stroke"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="second-count count-bar">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h4>
+                                    Drama
+                                </h4>
+                            </div>
+                            <div class="col-md-4">
+                                <span>
+                                    70%
+                                </span>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="colored-stroke"></div>
+                                <div class="white-stroke"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="third-count count-bar">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h4>
+                                    Work
+                                </h4>
+                            </div>
+                            <div class="col-md-4">
+                                <span>
+                                    80%
+                                </span>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="colored-stroke"></div>
+                                <div class="white-stroke"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-6 col-sm-6">
+                    <img class="count-image"
+                        src="https://3q87le1gsko01ibim33e4wib-wpengine.netdna-ssl.com/wp-content/uploads/2021/09/88_Alegria2019_MALemire-1024x682.jpg"
+                        alt="count-img">
+                </div>
+            </div>
+        </div>
+        <!-- Count Start -->
+        <!-- Team Start -->
+        <div class="team-area">
+            <h1>OUR TEAM</h1>
+            <span class="team-span">Brand</span>
+            <div class="row">
+                <div class="col-md-4 p-2">
+                    <div class="person name1">
+                        <div class="person-info">
+                            <div class="col-sm-12">
+                                <h3>
+                                    Name Surname
+                                </h3>
+                            </div>
+                            <div class="col-sm-12">
+                                <span>
+                                    Title
+                                </span>
+                            </div>
+                            <div class="col-sm-12">
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                                </p>
+                            </div>
+                            <div class="person-social-media row">
+                                <div class="col-sm-4">
+                                    <a href=""><i class="fa fa-facebook-official" aria-hidden="true"></i> /facebook</a>
+                                </div>
+                                <div class="col-sm-4">
+                                    <a href=""><i class="fa fa-instagram" aria-hidden="true"></i> @instagram</a>
+                                </div>
+                                <div class="col-sm-4">
+                                    <a href=""><i class="fa fa-linkedin" aria-hidden="true"></i> linkedin</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 p-2">
+                    <div class="person name2">
+                        <div class="person-info">
+                            <div class="col-sm-12">
+                                <h3>
+                                    Name Surname
+                                </h3>
+                            </div>
+                            <div class="col-sm-12">
+                                <span>
+                                    Title
+                                </span>
+                            </div>
+                            <div class="col-sm-12">
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                                </p>
+                            </div>
+                            <div class="person-social-media row">
+                                <div class="col-sm-4">
+                                    <a href=""><i class="fa fa-facebook-official" aria-hidden="true"></i> /facebook</a>
+                                </div>
+                                <div class="col-sm-4">
+                                    <a href=""><i class="fa fa-instagram" aria-hidden="true"></i> @instagram</a>
+                                </div>
+                                <div class="col-sm-4">
+                                    <a href=""><i class="fa fa-linkedin" aria-hidden="true"></i> linkedin</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 p-2">
+                    <div class="person name3">
+                        <div class="person-info">
+                            <div class="col-sm-12">
+                                <h3>
+                                    Name Surname
+                                </h3>
+                            </div>
+                            <div class="col-sm-12">
+                                <span>
+                                    Title
+                                </span>
+                            </div>
+                            <div class="col-sm-12">
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                                </p>
+                            </div>
+                            <div class="person-social-media row">
+                                <div class="col-sm-4">
+                                    <a href=""><i class="fa fa-facebook-official" aria-hidden="true"></i> /facebook</a>
+                                </div>
+                                <div class="col-sm-4">
+                                    <a href=""><i class="fa fa-instagram" aria-hidden="true"></i> @instagram</a>
+                                </div>
+                                <div class="col-sm-4">
+                                    <a href=""><i class="fa fa-linkedin" aria-hidden="true"></i> linkedin</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 p-2">
+                    <div class="person name4">
+                        <div class="person-info">
+                            <div class="col-sm-12">
+                                <h3>
+                                    Name Surname
+                                </h3>
+                            </div>
+                            <div class="col-sm-12">
+                                <span>
+                                    Title
+                                </span>
+                            </div>
+                            <div class="col-sm-12">
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                                </p>
+                            </div>
+                            <div class="person-social-media row">
+                                <div class="col-sm-4">
+                                    <a href=""><i class="fa fa-facebook-official" aria-hidden="true"></i> /facebook</a>
+                                </div>
+                                <div class="col-sm-4">
+                                    <a href=""><i class="fa fa-instagram" aria-hidden="true"></i> @instagram</a>
+                                </div>
+                                <div class="col-sm-4">
+                                    <a href=""><i class="fa fa-linkedin" aria-hidden="true"></i> linkedin</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 p-2">
+                    <div class="person name5">
+                        <div class="person-info">
+                            <div class="col-sm-12">
+                                <h3>
+                                    Name Surname
+                                </h3>
+                            </div>
+                            <div class="col-sm-12">
+                                <span>
+                                    Title
+                                </span>
+                            </div>
+                            <div class="col-sm-12">
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                                </p>
+                            </div>
+                            <div class="person-social-media row">
+                                <div class="col-sm-4">
+                                    <a href=""><i class="fa fa-facebook-official" aria-hidden="true"></i> /facebook</a>
+                                </div>
+                                <div class="col-sm-4">
+                                    <a href=""><i class="fa fa-instagram" aria-hidden="true"></i> @instagram</a>
+                                </div>
+                                <div class="col-sm-4">
+                                    <a href=""><i class="fa fa-linkedin" aria-hidden="true"></i> linkedin</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 p-2">
+                    <div class="person name6">
+                        <div class="person-info">
+                            <div class="col-sm-12">
+                                <h3>
+                                    Name Surname
+                                </h3>
+                            </div>
+                            <div class="col-sm-12">
+                                <span>
+                                    Title
+                                </span>
+                            </div>
+                            <div class="col-sm-12">
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                                </p>
+                            </div>
+                            <div class="person-social-media row">
+                                <div class="col-sm-4">
+                                    <a href=""><i class="fa fa-facebook-official" aria-hidden="true"></i> /facebook</a>
+                                </div>
+                                <div class="col-sm-4">
+                                    <a href=""><i class="fa fa-instagram" aria-hidden="true"></i> @instagram</a>
+                                </div>
+                                <div class="col-sm-4">
+                                    <a href=""><i class="fa fa-linkedin" aria-hidden="true"></i> linkedin</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Team End -->
+        <!-- Our Plays -->
+        <div class="plays-area">
+            <h1>OUR PLAYS</h1>
+            <span class="plays-span">Brand</span>
+            <div class="row">
+                <div class="col-md-4 col-lg-4 col-sm-12 p-2">
+                    <a href="">
+                        <div class="play-name">
+                            <div class="play-info"></div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 col-lg-4 col-sm-12 p-2">
+                    <a href="">
+                        <div class="play-name">
+                            <div class="play-info"></div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 col-lg-4 col-sm-12 p-2">
+                    <a href="">
+                        <div class="play-name">
+                            <div class="play-info"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-<!-- About End -->
-{% endblock main %}
-{% block javascripts %}
-{% endblock javascripts %}
+    {% endblock main %} {% block javascripts %} {% endblock javascripts %}
