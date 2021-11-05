@@ -67,5 +67,20 @@ app.get("/", (req, res) => {
         res.send(output)
     })
 })
+app.get("/hakkimizda", (req, res) => {
+    twing.render("about.html",{pageTitle: "About"}).then(output => {
+        res.send(output)
+    })
+})
+app.get("/oyunlar", (req, res) => {
+    twing.render("plays.html",{ pageTitle: "Plays" }).then(output => {
+        res.send(output)
+    })
+})
+app.get("/iletisim", (req, res) => {
+    twing.render("contact.html",{ pageTitle: "Contact" }).then(output => {
+        res.send(output)
+    })
+})
 
 app.listen(port, () => console.log("Sistem Başlatıldı"))

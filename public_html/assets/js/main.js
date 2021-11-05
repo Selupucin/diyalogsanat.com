@@ -9,3 +9,9 @@ $(window).scroll(function () {
         $('#site-logo').removeClass('site-logo-active')
     }
 });
+//PLAY FILTER HOVER
+$(".filter-buttons").hover(function () {
+    $(this).next().show()
+}, function () {
+    $(this).next().hide()
+});
