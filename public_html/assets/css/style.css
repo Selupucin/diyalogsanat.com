@@ -37,6 +37,13 @@ button {
     border: none;
 }
 
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  -webkit-appearance:none;
+}
+
 
 /* Header */
 
@@ -99,6 +106,39 @@ header.sticky-header {
 
 .header-icons li a:hover {
     font-size: 24px;
+}
+
+.header-search {
+    display: none;
+    color: black;
+    width: 100%;
+    padding: 5px 5px 5px 40px;
+    border: none;
+    background-color: white;
+    border-radius: 5px;
+    outline: none;
+    transition-duration: 0.5s;
+}
+
+.header-search:focus {
+    outline: none;
+    border: none;
+    box-shadow: 0 0 5px rgb(0, 0, 0);
+}
+
+#header-close-icon {
+    display: none;
+    color: black;
+    position: absolute;
+    z-index: 10;
+    left: 30px;
+    top: 2px;
+    font-size: 20px;
+}
+
+#header-close-icon:hover {
+    color: rgba(0, 0, 0, 0.774);
+    font-size: 20px !important;
 }
 
 .top-menu li {
@@ -387,7 +427,7 @@ header.sticky-header {
     height: 100%;
 }
 
-.about-texts h1, span, p {
+.about-texts h1, .about-texts span, .about-texts p {
     color: white;
 }
 
@@ -434,7 +474,7 @@ header.sticky-header {
     margin-top: 8em;
 }
 
-.count-area h1,span {
+.count-area h1, .count-area span {
     color: white;
 }
 
@@ -555,7 +595,7 @@ header.sticky-header {
     margin-top: 8em;
 }
 
-.team-area h1,span {
+.team-area h1, .team-area span {
     color: white;
     text-align: center;
 }
@@ -665,7 +705,7 @@ header.sticky-header {
     margin-top: 8em;
 }
 
-.plays-area h1,span {
+.plays-area h1, .plays-area span {
     color: white;
     text-align: center;
 }
@@ -863,27 +903,40 @@ footer ul li a:hover img {
 /* Filter */
 
 .filter-area {
-    margin-top: 20em;
+    margin-top: 5em !important;
+    margin-bottom: 2em;
 }
 
 .filter-area h1 {
     color: white;
-    font-size: 18px;
-    margin-bottom: 5em;
+    font-size: 20px;
+    margin-bottom: 4em;
+    text-align: center;
 }
 
 .filter-area ul {
     height: 120px;
+    text-align: center;
+}
+
+.filter-area ul li {
+    float: left;
+    width: 10em;
+    transition: all 0.5s ease-in-out;
+    opacity: 0;
+}
+
+.filter-area ul li:first-child {
+    margin-left: 0;
 }
 
 .filter-buttons {
-    width: 80px;
-    height: 80px;
+    width: 120px;
+    height: 120px;
     padding: 10px;
     border-radius: 100px;
     background-color: white;
     transition: all 0.5s ease-in-out;
-    transform: translate(-50%, -50%);
     font-size: 12px;
     font-weight: bolder;
 }
@@ -902,8 +955,8 @@ footer ul li a:hover img {
 
 .filter-buttons:hover {
     box-shadow: 0 0 30px rgb(0 0 0 / 35%);
-    width: 90px;
-    height: 90px;
+    width: 90px !important;
+    height: 90px !important;
     border-radius: 100px;
     background-color: rgba(255, 255, 255, 0.5);
 }
@@ -928,9 +981,259 @@ footer ul li a:hover img {
 .filter-button-info {
     display: none;
     color: white;
-    margin-top: -2em;
+    margin-top: 1em;
     text-align: center;
     font-size: 13px;
     font-weight: bold;
-    transform: translate(-50%, -50%);
+}
+
+.plays-area h1, .plays-area span {
+    color: white;
+    text-align: center;
+}
+
+.plays-area h1 {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.plays-span {
+    margin-left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Dancing Script', cursive;
+    font-size: 28px;
+    display: block;
+}
+
+
+/* CONTACT AREA */
+
+.contact-header {
+    margin-top: 10em !important;
+}
+
+.contact-header h1, .contact-header span, .contact-header p {
+    color: white;
+}
+
+.contact-header h1 {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.contact-header span {
+    margin-left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Dancing Script', cursive;
+    font-size: 28px;
+    display: block;
+    text-align: center;
+}
+
+.map-area {
+    margin: 5em 0 !important;
+    height: 400px;
+}
+
+.contact-area {
+    padding: 0 8em !important;
+}
+
+.contact-area ul {
+    width: 100%;
+    height: fit-content;
+    text-align: center;
+}
+
+.contact-area ul li {
+    color: white;
+    margin: 2em 0 !important;
+    padding: 1em;
+    transition-duration: 0.5s;
+    text-align: center;
+}
+
+.contact-area ul li:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.829);
+    border-radius: 100px;
+}
+
+.contact-area ul li a {
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    transition-duration: 0.5s;
+}
+
+.contact-area ul li a:hover {
+    color: rgb(172, 172, 172);
+    text-decoration: none;
+}
+
+.contact-area h2 {
+    color: white;
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.form-area {
+    padding: 0 8em !important;
+}
+
+.form-area h2 {
+    color: white;
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.form-area input {
+    text-align: center;
+    padding-left: 10px !important;
+    width: 100%;
+    height: 40px;
+    border-radius: 40px;
+    outline: none;
+    border: none;
+    color: rgb(53, 53, 53);
+    background-color: rgba(255, 255, 255, 0.459);
+    border-bottom: 1px solid white;
+    transition-duration: 0.5s;
+    margin: 0.5em 0;
+}
+
+.form-area label {
+    color: white;
+    text-align: center;
+    margin: 0.5em 0.5em 0.5em 50%;
+    transform: translateX(-50%);
+}
+
+.form-area textarea {
+    vertical-align: middle;
+    text-align: left;
+    padding: 20px 20px !important;
+    width: 100%;
+    border-radius: 40px;
+    outline: none;
+    border: none;
+    color: rgb(53, 53, 53);
+    background-color: rgba(255, 255, 255, 0.459);
+    border-bottom: 1px solid white;
+    transition-duration: 0.5s;
+}
+
+.form-area input:hover {
+    color: white;
+    background-color: rgb(53, 53, 53);
+    height: 50px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.829);
+}
+
+.form-area textarea:hover {
+    color: white;
+    background-color: rgb(53, 53, 53);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.829);
+}
+
+.form-area input:focus {
+    color: white;
+    background-color: rgb(53, 53, 53);
+    height: 50px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.829);
+}
+
+.form-area textarea:focus {
+    color: white;
+    background-color: rgb(53, 53, 53);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.829);
+}
+
+
+/* Modal */
+.modal {
+    background-color: rgba(0, 0, 0, 0.685);
+}
+.modal-content {
+    border: none !important;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.829);
+}
+.modal-header {
+    background-image: url("https://artkolektif.com/wp-content/uploads/2020/07/cirque.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: rgb(53, 53, 53);
+    color: white !important;
+    min-height: 200px;
+    align-items: flex-start !important;
+    border: none !important;
+}
+.modal-title {
+    padding-top: 200px;
+    color: white;
+    font-size: 40px;
+    font-weight: bolder;
+    line-height: 0.8 !important;
+}
+.modal-title span {
+    font-size: 25px;
+    font-weight: normal;
+}
+.modal-header button {
+    height: 30px;
+    width: 30px;
+    border-radius: 30px;
+    background: rgba(0, 0, 0, 0.548);
+    color: white;
+    font-size: 19px;
+    font-weight: bolder;
+    transition-duration: 0.5s;
+}
+.modal-header button:hover{
+    background: rgba(0, 0, 0, 0.678);
+    font-size: 20px;
+}
+.modal-body {
+    background-color: rgb(41, 41, 41);
+    border: none !important;
+    color: white;
+}
+.text-g {
+    color: #777;
+}
+.text-b {
+    color: #44c2ea;
+}
+.text-p {
+    color: #6368b0;
+}
+.text-r {
+    color: #d25050;
+}
+.modal-footer {
+    background-color: rgb(53, 53, 53) !important;
+    border: none !important;
+}
+.buy-button {
+    background-color: white;
+    padding: 10px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 500;
+    color: rgb(41, 41, 41);
+    transition-duration: 0.5s;
+}
+
+.buy-button:hover {
+    background-color: rgba(255, 255, 255, 0.692);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.466);
+    outline: none;
+    stroke: none;
+    border: none;
+    text-decoration: none;
+    color: rgb(41, 41, 41);
 }

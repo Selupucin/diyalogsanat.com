@@ -5,27 +5,28 @@
         </div>
         <div class="col-lg-5 col-md-5">
             <ul class="top-menu">
-                <li class="menu-active">All</li>
-                <li><a href="">Drama</a></li>
-                <li><a href="">Comedy</a></li>
-                <li><a href="">Tragedy</a></li>
-                <li><a href="">Musical</a></li>
+                <li id="index"><a class="header-menu-item" href="/">Home</a></li>
+                <li><a class="header-menu-item" href="/hakkimizda">About</a></li>
+                <li><a class="header-menu-item" href="/oyunlar">Plays</a></li>
+                <li><a class="header-menu-item" href="/iletisim">Contact</a></li>
             </ul>
         </div>
         <div class="col-lg-2 col-md-2">
 
         </div>
         <div class="col-lg-2 col-md-2">
-            <ul class="header-icons">
-                <li>
-                    <a href="">
-                        <i class="fa fa-search" aria-hidden="true"></i>
-                    </a>
-                </li>
-                <li>
+            <ul class="header-icons row">
+                <li class="col-md-1">
                     <a href="/">
                         <i class="fa fa-home" aria-hidden="true"></i>
                     </a>
+                </li>
+                <li class="col-md-1" id="search-area" style="position: relative;">
+                    <a id="header-search-icon" onclick="searchBar()" href="javascript:void(0)">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </a>
+                    <input class="header-search" onfocusout="searchBarClose()" type="search" placeholder="Search and press enter">
+                    <a id="header-close-icon" onclick="searchNow()" href="javascript:void(0)"><i class="fa fa-search" aria-hidden="true"></i></a>
                 </li>
             </ul>
         </div>

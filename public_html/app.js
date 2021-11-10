@@ -63,22 +63,27 @@ let transporter = nodemailer.createTransport({
 });
 
 app.get("/", (req, res) => {
-    twing.render("index.html",{}).then(output => {
+    twing.render("index.html", {}).then(output => {
         res.send(output)
     })
 })
 app.get("/hakkimizda", (req, res) => {
-    twing.render("about.html",{pageTitle: "About"}).then(output => {
+    twing.render("about.html", { pageTitle: "About" }).then(output => {
         res.send(output)
     })
 })
 app.get("/oyunlar", (req, res) => {
-    twing.render("plays.html",{ pageTitle: "Plays" }).then(output => {
+    twing.render("plays.html", { pageTitle: "Plays" }).then(output => {
         res.send(output)
     })
 })
 app.get("/iletisim", (req, res) => {
-    twing.render("contact.html",{ pageTitle: "Contact" }).then(output => {
+    twing.render("contact.html", { pageTitle: "Contact" }).then(output => {
+        res.send(output)
+    })
+})
+app.post("/modal_open", (req, res) => {
+    twing.render("/parts/modal.html", {}).then(output => {
         res.send(output)
     })
 })
